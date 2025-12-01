@@ -37,3 +37,37 @@ curl -head --silent google.com | grep - i content-length
 '!-n:$' Take the last parameter from the previous command
 '!-n:1' Take the first parameter from the previous command
 '!-n:-2' Take the second last parameter from the previous command
+
+## Variables in Shell
+In shell we can assign value to variable using `foo=bar` (note without any space)
+```
+$ echo "$(date +%s)" # %s is seconds since epoch
+1536984661
+$ echo $_ !$ "$(date +%s)" # don't hit enter until a few seconds pass
+1536984661 1536984665 1536984665
+```
+## Operators in Shell
+
+`A && B` B will only be executed if A is true (0)
+`A || B` B will only be executed if A if false (1)
+`A ; B` B will always be executed
+
+### Dollar Sign
+`$var` will expand this variable 'var'
+`$()` will do command substituion and capture the `std_out` of the command.
+`$0` the name of the script
+`$n` the parameter in n-th position
+`$#` the number of postional parameter
+`$@` expand all positional parameters as separate words
+`$*` exapnd all positional parameters as a single word
+`$$` the pid of the shell
+`$?` the exit status of the previous line
+`$!` pid of the most recently executed command
+
+## Conversion 
+To convert file from `.png` to `.jpg` we can do
+```
+convert image.png image.jpg
+or 
+convert image.{png,jpg}
+```
